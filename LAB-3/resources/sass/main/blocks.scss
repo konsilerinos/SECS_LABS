@@ -1,0 +1,20 @@
+hr {
+  background-color: $light-gray;
+  border: none;
+  height: 1px;
+  width: 100%;
+}
+
+.block-none {
+  display: none;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.block-inline {
+  display: inline-block;
+}

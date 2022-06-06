@@ -1,0 +1,14 @@
+a,
+a:visited {
+  color: $link-color;
+  transition: $trans;
+  text-decoration: none;
+  outline-color: transparent;
+  display: inline-block;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: lighten($black, 15%);
+  }
+}
