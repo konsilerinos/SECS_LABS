@@ -26,6 +26,13 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    protected $telegram;
+
+    public function __construct(Container $container, Telegram $telegram) {
+        parent::__construct($container);
+        $this->telegram = $telegram;
+    }
+
     /**
      * Report or log an exception.
      *
@@ -33,9 +40,17 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function report(Exception $exception)
+    public function report(Exception $exception) 
     {
-        parent::report($exception);
+        // Сообщение об ошибке
+        $logData = [
+            'description' => $exception->getMessage(),
+            'file' => $exception->getFile(),
+            'line' => $exception->getLine(),
+        ];
+
+        // Отправка
+        $this->telegram->sendMessage(11111, (string)view('report', $logData));
     }
 
     /**
